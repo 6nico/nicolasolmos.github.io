@@ -4,184 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nicolas Olmos</title>
-    <style>
-        :root {
-            --bg: #fefefe;
-            --text: #1a1a1a;
-            --text-secondary: #666;
-            --accent: #2563eb;
-            --border: #e5e5e5;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            font-size: 17px;
-        }
-
-        .container {
-            max-width: 680px;
-            margin: 0 auto;
-            padding: 80px 24px 120px;
-        }
-
-        nav {
-            margin-bottom: 80px;
-            font-size: 15px;
-        }
-
-        nav a {
-            color: var(--text);
-            text-decoration: none;
-            margin-right: 24px;
-            transition: color 0.2s;
-        }
-
-        nav a:hover {
-            color: var(--accent);
-        }
-
-        nav a.active {
-            text-decoration: underline;
-            text-decoration-thickness: 1px;
-            text-underline-offset: 4px;
-        }
-
-        h1 {
-            font-size: 32px;
-            font-weight: 600;
-            margin-bottom: 32px;
-            letter-spacing: -0.02em;
-        }
-
-        h2 {
-            font-size: 24px;
-            font-weight: 600;
-            margin: 48px 0 24px;
-            letter-spacing: -0.01em;
-        }
-
-        p {
-            margin-bottom: 20px;
-            color: var(--text-secondary);
-        }
-
-        a {
-            color: var(--accent);
-            text-decoration: underline;
-            text-decoration-thickness: 1px;
-            text-underline-offset: 2px;
-        }
-
-        a:hover {
-            text-decoration-thickness: 2px;
-        }
-
-        .project-list {
-            list-style: none;
-            margin-top: 32px;
-        }
-
-        .project-item {
-            margin-bottom: 16px;
-            display: flex;
-            align-items: baseline;
-            gap: 12px;
-        }
-
-        .project-item a {
-            flex: 1;
-        }
-
-        .project-date {
-            color: var(--text-secondary);
-            font-size: 15px;
-            font-variant-numeric: tabular-nums;
-            white-space: nowrap;
-        }
-
-        .project-card {
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 32px;
-            margin-bottom: 24px;
-            transition: border-color 0.2s;
-        }
-
-        .project-card:hover {
-            border-color: var(--accent);
-        }
-
-        .project-card h3 {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-
-        .project-card p {
-            margin-bottom: 16px;
-        }
-
-        .project-card .tags {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .tag {
-            font-size: 13px;
-            color: var(--text-secondary);
-            background: #f5f5f5;
-            padding: 4px 12px;
-            border-radius: 999px;
-        }
-
-        .intro {
-            color: var(--text);
-            font-size: 17px;
-            line-height: 1.7;
-        }
-
-        @media (max-width: 640px) {
-            .container {
-                padding: 48px 20px 80px;
-            }
-
-            h1 {
-                font-size: 28px;
-            }
-
-            .project-item {
-                flex-direction: column;
-                gap: 4px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <nav>
-            <a href="/" class="active">latest</a>
-            <a href="/about">me</a>
+            <a href="index.html" class="active">latest</a>
+            <a href="about.html">me</a>
         </nav>
 
         <h1>Nicolas Olmos</h1>
         
         <p class="intro">
-            Third-year Business Economics student at UC San Diego. Building projects in supply chain analytics, data visualization, and investigative tools.
+            I'm a third-year Business Economics student at UC San Diego with a strong interest in solving real-world problems through data, technology, and research. My work focuses on supply chain analytics, business strategy, and building tools that turn complex information into useful insights. I enjoy exploring new ideas, learning new technologies, and creating projects that make a meaningful impact.
         </p>
 
-        <div style="margin-top: 48px;">
+        <div class="projects">
             <div class="project-card">
-                <h3>NVIDIA Semiconductor Supply Chain Analysis</h3>
+                <h3><a href="nvidia-supply-chain.html">NVIDIA Semiconductor Supply Chain Analysis</a></h3>
                 <p>Built an Excel-based supply chain model to forecast semiconductor demand and evaluate supplier risks. Simulated production delays and inventory strategies to measure stockout risk and operational performance.</p>
                 <div class="tags">
                     <span class="tag">Excel</span>
@@ -189,42 +29,9 @@
                     <span class="tag">Forecasting</span>
                 </div>
             </div>
-
-            <div class="project-card">
-                <h3>CLOO – California Crime Map</h3>
-                <p>Crime mapping and investigative stories platform with verified cases, body-camera footage, and smart search. Designed to help people understand crime patterns across California.</p>
-                <div class="tags">
-                    <span class="tag">React</span>
-                    <span class="tag">Maps</span>
-                    <span class="tag">Data Visualization</span>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <h3>RabbitHole – Curiosity Explorer</h3>
-                <p>Visual knowledge graph that connects saved links, questions, and notes. Turn scattered research into an explorable map of ideas.</p>
-                <div class="tags">
-                    <span class="tag">React</span>
-                    <span class="tag">TypeScript</span>
-                    <span class="tag">React Flow</span>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <h3>AMC Entertainment Financial Analysis</h3>
-                <p>Analyzed revenue, profitability, liquidity, and working capital to assess financial performance. Compared AMC against Cinemark and Cineplex using competitor benchmarking.</p>
-                <div class="tags">
-                    <span class="tag">Excel</span>
-                    <span class="tag">Financial Analysis</span>
-                    <span class="tag">Business Analysis</span>
-                </div>
-            </div>
         </div>
 
-        <h2>Experience</h2>
-        <p>Tech Consultant at Target, Co-Founder of Omny Pro, and formerly at Best Buy. Currently exploring opportunities in supply chain analytics and investigative work.</p>
-
-        <p style="margin-top: 32px;">
+        <p style="margin-top: 48px;">
             <a href="mailto:nolmos28@outlook.com">Email</a> · 
             <a href="https://linkedin.com/in/nicolasolmosba">LinkedIn</a> · 
             <a href="https://github.com/nicolasolmos">GitHub</a>
