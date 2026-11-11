@@ -5,6 +5,255 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NVIDIA Supply Chain Analysis – Nicolas Olmos</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .nvidia-accent {
+            color: #76b900;
+        }
+
+        .scenario-selector {
+            display: flex;
+            gap: 12px;
+            margin: 32px 0;
+            flex-wrap: wrap;
+        }
+
+        .scenario-btn {
+            padding: 12px 24px;
+            border: 1px solid var(--border);
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            transition: all 0.2s;
+        }
+
+        .scenario-btn:hover {
+            border-color: #76b900;
+        }
+
+        .scenario-btn.active {
+            background: #76b900;
+            color: white;
+            border-color: #76b900;
+        }
+
+        .chart-container {
+            margin: 32px 0;
+            padding: 32px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: #fafafa;
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin: 32px 0;
+        }
+
+        .metric-card {
+            padding: 20px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: white;
+        }
+
+        .metric-value {
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--text);
+            margin: 8px 0;
+        }
+
+        .metric-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .metric-change {
+            font-size: 14px;
+            margin-top: 8px;
+        }
+
+        .metric-change.positive {
+            color: #76b900;
+        }
+
+        .metric-change.negative {
+            color: #ef4444;
+        }
+
+        .bar-chart {
+            margin: 24px 0;
+        }
+
+        .bar-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .bar-label {
+            width: 140px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .bar-container {
+            flex: 1;
+            height: 32px;
+            background: #f0f0f0;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #76b900, #5a8f00);
+            transition: width 0.6s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 12px;
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .line-chart {
+            height: 300px;
+            position: relative;
+            margin: 32px 0;
+        }
+
+        .line-chart svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .strategy-comparison {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin: 32px 0;
+        }
+
+        .strategy-card {
+            padding: 24px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .strategy-card:hover {
+            border-color: #76b900;
+            transform: translateY(-2px);
+        }
+
+        .strategy-card.recommended {
+            border-color: #76b900;
+            background: #f6fef0;
+        }
+
+        .strategy-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .strategy-metric {
+            display: flex;
+            justify-content: space-between;
+            margin: 8px 0;
+            font-size: 14px;
+        }
+
+        .risk-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+
+        .risk-low {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .risk-medium {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .risk-high {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .supplier-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 32px 0;
+            font-size: 15px;
+        }
+
+        .supplier-table th {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 2px solid var(--border);
+            font-weight: 600;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-secondary);
+        }
+
+        .supplier-table td {
+            padding: 16px 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .supplier-table tr:hover {
+            background: #fafafa;
+        }
+
+        .interactive-note {
+            background: #f6fef0;
+            border-left: 3px solid #76b900;
+            padding: 16px 20px;
+            margin: 32px 0;
+            border-radius: 4px;
+        }
+
+        @media (max-width: 640px) {
+            .scenario-selector {
+                flex-direction: column;
+            }
+
+            .scenario-btn {
+                width: 100%;
+            }
+
+            .bar-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .bar-label {
+                margin-bottom: 8px;
+            }
+
+            .bar-container {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -12,29 +261,243 @@
             <a href="index.html">← back</a>
         </nav>
 
-        <h1>NVIDIA Semiconductor Supply Chain Risk & Optimization</h1>
+        <h1>NVIDIA Semiconductor Supply Chain <span class="nvidia-accent">Risk & Optimization</span></h1>
         
         <p style="color: var(--text-secondary); margin-bottom: 32px;">Oct 2026 – Present</p>
 
-        <p>Built an Excel-based supply chain model to forecast semiconductor demand and evaluate supplier risks across different scenarios. The project simulates production delays and inventory strategies to measure stockout risk and operational performance.</p>
+        <p>Built an interactive supply chain model to forecast semiconductor demand and evaluate supplier risks across different scenarios. Simulates production delays and inventory strategies to measure stockout risk and operational performance.</p>
 
-        <h2>Problem</h2>
-        <p>Semiconductor supply chains face long lead times (14-20 weeks), geopolitical risks, and volatile demand. Companies need to balance inventory costs against stockout risk while diversifying suppliers.</p>
+        <div class="interactive-note">
+            <strong>Interactive Model:</strong> Toggle between scenarios to see how demand forecasts, supplier capacity, and inventory strategies change under different conditions.
+        </div>
 
-        <h2>Approach</h2>
-        <p><strong>Demand Forecasting:</strong> Created three scenarios (Base Case, High Growth +25%, Supply Constrained -15%) projecting quarterly demand through Q2 2028. Used VLOOKUP and conditional formatting to track market share trends.</p>
+        <h2>Demand Forecast</h2>
+        
+        <div class="scenario-selector">
+            <button class="scenario-btn active" onclick="updateScenario('base')">Base Case</button>
+            <button class="scenario-btn" onclick="updateScenario('growth')">High Growth (+25%)</button>
+            <button class="scenario-btn" onclick="updateScenario('constrained')">Supply Constrained (-15%)</button>
+        </div>
 
-        <p><strong>Supplier Analysis:</strong> Evaluated five suppliers (TSMC, Samsung, Intel, GlobalFoundries, SMIC) on lead time, capacity, reliability score, geopolitical risk, and cost per unit. Color-coded risk levels to visualize exposure.</p>
+        <div class="metric-grid">
+            <div class="metric-card">
+                <div class="metric-label">Q2 2027 Demand</div>
+                <div class="metric-value" id="q2-demand">14,200K</div>
+                <div class="metric-change positive" id="q2-change">+13.6% from Q1</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Q2 2028 Demand</div>
+                <div class="metric-value" id="q2-2028">21,000K</div>
+                <div class="metric-change positive" id="q2-2028-change">+68% growth</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Market Share</div>
+                <div class="metric-value" id="market-share">23.8%</div>
+                <div class="metric-change positive">+1.3pp YoY</div>
+            </div>
+        </div>
 
-        <p><strong>Inventory Simulation:</strong> Simulated 12 weeks of inventory management using three reorder strategies: Conservative (40% threshold), Aggressive (25%), and Just-in-Time (15%). Tracked weekly demand, inventory levels, and stockout incidents.</p>
+        <div class="chart-container">
+            <div class="line-chart" id="demand-chart">
+                <svg viewBox="0 0 600 250">
+                    <defs>
+                        <linearGradient id="lineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#76b900;stop-opacity:0.3" />
+                            <stop offset="100%" style="stop-color:#76b900;stop-opacity:0.05" />
+                        </linearGradient>
+                    </defs>
+                    
+                    <!-- Grid lines -->
+                    <line x1="50" y1="200" x2="550" y2="200" stroke="#e5e5e5" stroke-width="1"/>
+                    <line x1="50" y1="150" x2="550" y2="150" stroke="#e5e5e5" stroke-width="1"/>
+                    <line x1="50" y1="100" x2="550" y2="100" stroke="#e5e5e5" stroke-width="1"/>
+                    <line x1="50" y1="50" x2="550" y2="50" stroke="#e5e5e5" stroke-width="1"/>
+                    
+                    <!-- Base case line -->
+                    <polyline id="forecast-line"
+                        points="50,180 150,160 250,135 350,110 450,85 550,55"
+                        fill="url(#lineGradient)"
+                        stroke="#76b900"
+                        stroke-width="3"
+                        style="transition: all 0.6s ease;"/>
+                    
+                    <!-- Points -->
+                    <circle cx="50" cy="180" r="5" fill="#76b900"/>
+                    <circle cx="150" cy="160" r="5" fill="#76b900"/>
+                    <circle cx="250" cy="135" r="5" fill="#76b900"/>
+                    <circle cx="350" cy="110" r="5" fill="#76b900"/>
+                    <circle cx="450" cy="85" r="5" fill="#76b900"/>
+                    <circle cx="550" cy="55" r="5" fill="#76b900"/>
+                    
+                    <!-- Labels -->
+                    <text x="50" y="220" text-anchor="middle" font-size="12" fill="#666">Q1 27</text>
+                    <text x="150" y="220" text-anchor="middle" font-size="12" fill="#666">Q2 27</text>
+                    <text x="250" y="220" text-anchor="middle" font-size="12" fill="#666">Q3 27</text>
+                    <text x="350" y="220" text-anchor="middle" font-size="12" fill="#666">Q4 27</text>
+                    <text x="450" y="220" text-anchor="middle" font-size="12" fill="#666">Q1 28</text>
+                    <text x="550" y="220" text-anchor="middle" font-size="12" fill="#666">Q2 28</text>
+                </svg>
+            </div>
+        </div>
 
-        <h2>Results</h2>
-        <p>The Aggressive strategy (25% reorder threshold) proved optimal, balancing inventory costs with stockout prevention. JIT strategy created 15,200+ units of stockout risk over 12 weeks. Analysis showed 68% demand growth from Q1 2027 to Q2 2028, with TSMC and Samsung accounting for 52% of capacity but carrying high geopolitical risk.</p>
+        <h2>Supplier Analysis</h2>
+
+        <table class="supplier-table">
+            <thead>
+                <tr>
+                    <th>Supplier</th>
+                    <th>Region</th>
+                    <th>Lead Time</th>
+                    <th>Capacity (K/Q)</th>
+                    <th>Reliability</th>
+                    <th>Geo Risk</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>TSMC Taiwan</strong></td>
+                    <td>Asia-Pacific</td>
+                    <td>16 weeks</td>
+                    <td>8,500</td>
+                    <td>95%</td>
+                    <td><span class="risk-badge risk-high">High</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Samsung Korea</strong></td>
+                    <td>Asia-Pacific</td>
+                    <td>18 weeks</td>
+                    <td>6,200</td>
+                    <td>92%</td>
+                    <td><span class="risk-badge risk-medium">Medium</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Intel US</strong></td>
+                    <td>North America</td>
+                    <td>14 weeks</td>
+                    <td>4,800</td>
+                    <td>88%</td>
+                    <td><span class="risk-badge risk-low">Low</span></td>
+                </tr>
+                <tr>
+                    <td><strong>GlobalFoundries US</strong></td>
+                    <td>North America</td>
+                    <td>15 weeks</td>
+                    <td>3,500</td>
+                    <td>85%</td>
+                    <td><span class="risk-badge risk-low">Low</span></td>
+                </tr>
+                <tr>
+                    <td><strong>SMIC China</strong></td>
+                    <td>Asia-Pacific</td>
+                    <td>20 weeks</td>
+                    <td>5,000</td>
+                    <td>78%</td>
+                    <td><span class="risk-badge risk-high">Very High</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="bar-chart">
+            <h3 style="margin-bottom: 24px;">Supplier Capacity Distribution</h3>
+            <div class="bar-row">
+                <div class="bar-label">TSMC Taiwan</div>
+                <div class="bar-container">
+                    <div class="bar-fill" style="width: 85%">8,500K</div>
+                </div>
+            </div>
+            <div class="bar-row">
+                <div class="bar-label">Samsung Korea</div>
+                <div class="bar-container">
+                    <div class="bar-fill" style="width: 62%">6,200K</div>
+                </div>
+            </div>
+            <div class="bar-row">
+                <div class="bar-label">SMIC China</div>
+                <div class="bar-container">
+                    <div class="bar-fill" style="width: 50%">5,000K</div>
+                </div>
+            </div>
+            <div class="bar-row">
+                <div class="bar-label">Intel US</div>
+                <div class="bar-container">
+                    <div class="bar-fill" style="width: 48%">4,800K</div>
+                </div>
+            </div>
+            <div class="bar-row">
+                <div class="bar-label">GlobalFoundries US</div>
+                <div class="bar-container">
+                    <div class="bar-fill" style="width: 35%">3,500K</div>
+                </div>
+            </div>
+        </div>
+
+        <p><strong>Key Finding:</strong> TSMC and Samsung account for 52% of total supplier capacity but carry high geopolitical risk. Diversifying to North American suppliers reduces risk despite 12% higher costs.</p>
+
+        <h2>Inventory Strategy Comparison</h2>
+
+        <div class="strategy-comparison">
+            <div class="strategy-card">
+                <div class="strategy-title">Conservative (40%)</div>
+                <div class="strategy-metric">
+                    <span>Reorder Point</span>
+                    <strong>6,000 units</strong>
+                </div>
+                <div class="strategy-metric">
+                    <span>Stockout Risk</span>
+                    <strong>0 units</strong>
+                </div>
+                <div class="strategy-metric">
+                    <span>Avg Inventory</span>
+                    <strong>11,200 units</strong>
+                </div>
+                <span class="risk-badge risk-low">Low Risk</span>
+            </div>
+
+            <div class="strategy-card recommended">
+                <div class="strategy-title">Aggressive (25%) ✓</div>
+                <div class="strategy-metric">
+                    <span>Reorder Point</span>
+                    <strong>3,750 units</strong>
+                </div>
+                <div class="strategy-metric">
+                    <span>Stockout Risk</span>
+                    <strong>450 units</strong>
+                </div>
+                <div class="strategy-metric">
+                    <span>Avg Inventory</span>
+                    <strong>8,900 units</strong>
+                </div>
+                <span class="risk-badge risk-medium">Optimal Balance</span>
+            </div>
+
+            <div class="strategy-card">
+                <div class="strategy-title">Just-in-Time (15%)</div>
+                <div class="strategy-metric">
+                    <span>Reorder Point</span>
+                    <strong>2,250 units</strong>
+                </div>
+                <div class="strategy-metric">
+                    <span>Stockout Risk</span>
+                    <strong>15,200 units</strong>
+                </div>
+                <div class="strategy-metric">
+                    <span>Avg Inventory</span>
+                    <strong>6,100 units</strong>
+                </div>
+                <span class="risk-badge risk-high">High Risk</span>
+            </div>
+        </div>
 
         <h2>Recommendations</h2>
-        <p>Diversify to North American suppliers despite 12% higher costs. Maintain Aggressive reorder strategy. Monitor lead time changes and adjust safety stock accordingly.</p>
+        <ul style="margin: 24px 0; line-height: 1.8;">
+            <li>Implement <strong>Aggressive reorder strategy (25%)</strong> — balances inventory costs with acceptable stockout risk</li>
+            <li><strong>Diversify to North American suppliers</strong> (Intel, GlobalFoundries) to reduce geopolitical exposure</li>
+            <li>Maintain <strong>safety stock of 4,000 units</strong> to buffer against demand spikes</li>
+            <li><strong>Monitor lead times weekly</strong> and adjust reorder points when supplier delays exceed 18 weeks</li>
+            <li>Establish <strong>dual-sourcing agreements</strong> for critical components</li>
+        </ul>
 
-        <div class="tags" style="margin-top: 32px;">
+        <div class="tags" style="margin-top: 48px;">
             <span class="tag">Excel</span>
             <span class="tag">PivotTables</span>
             <span class="tag">VLOOKUP</span>
@@ -43,9 +506,57 @@
             <span class="tag">Risk Analysis</span>
         </div>
 
-        <p style="margin-top: 48px;">
+        <p style="margin-top: 32px;">
             <a href="NVIDIA_Supply_Chain_Analysis.xlsx" download>Download Excel Model</a>
         </p>
     </div>
+
+    <script>
+        const scenarios = {
+            base: {
+                q2: '14,200K',
+                q22028: '21,000K',
+                q2change: '+13.6% from Q1',
+                q22028change: '+68% growth',
+                share: '23.8%',
+                points: '50,180 150,160 250,135 350,110 450,85 550,55'
+            },
+            growth: {
+                q2: '17,750K',
+                q22028: '26,250K',
+                q2change: '+42% from Q1',
+                q22028change: '+110% growth',
+                share: '27.2%',
+                points: '50,190 150,165 250,130 350,90 450,55 550,20'
+            },
+            constrained: {
+                q2: '12,070K',
+                q22028: '17,850K',
+                q2change: '-3.5% from Q1',
+                q22028change: '+42% growth',
+                share: '21.5%',
+                points: '50,185 150,170 250,148 350,130 450,110 550,90'
+            }
+        };
+
+        function updateScenario(type) {
+            // Update button states
+            document.querySelectorAll('.scenario-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Update metrics
+            const data = scenarios[type];
+            document.getElementById('q2-demand').textContent = data.q2;
+            document.getElementById('q2-2028').textContent = data.q22028;
+            document.getElementById('q2-change').textContent = data.q2change;
+            document.getElementById('q2-2028-change').textContent = data.q22028change;
+            document.getElementById('market-share').textContent = data.share;
+
+            // Update chart
+            document.getElementById('forecast-line').setAttribute('points', data.points);
+        }
+    </script>
 </body>
 </html>
