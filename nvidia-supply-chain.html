@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NVIDIA Supply Chain Analysis – Nicolas Olmos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a href="index.html">← back</a>
+        </nav>
+
+        <h1>NVIDIA Semiconductor Supply Chain Risk & Optimization</h1>
+        
+        <p style="color: var(--text-secondary); margin-bottom: 32px;">Oct 2026 – Present</p>
+
+        <p>Built an Excel-based supply chain model to forecast semiconductor demand and evaluate supplier risks across different scenarios. The project simulates production delays and inventory strategies to measure stockout risk and operational performance.</p>
+
+        <h2>Problem</h2>
+        <p>Semiconductor supply chains face long lead times (14-20 weeks), geopolitical risks, and volatile demand. Companies need to balance inventory costs against stockout risk while diversifying suppliers.</p>
+
+        <h2>Approach</h2>
+        <p><strong>Demand Forecasting:</strong> Created three scenarios (Base Case, High Growth +25%, Supply Constrained -15%) projecting quarterly demand through Q2 2028. Used VLOOKUP and conditional formatting to track market share trends.</p>
+
+        <p><strong>Supplier Analysis:</strong> Evaluated five suppliers (TSMC, Samsung, Intel, GlobalFoundries, SMIC) on lead time, capacity, reliability score, geopolitical risk, and cost per unit. Color-coded risk levels to visualize exposure.</p>
+
+        <p><strong>Inventory Simulation:</strong> Simulated 12 weeks of inventory management using three reorder strategies: Conservative (40% threshold), Aggressive (25%), and Just-in-Time (15%). Tracked weekly demand, inventory levels, and stockout incidents.</p>
+
+        <h2>Results</h2>
+        <p>The Aggressive strategy (25% reorder threshold) proved optimal, balancing inventory costs with stockout prevention. JIT strategy created 15,200+ units of stockout risk over 12 weeks. Analysis showed 68% demand growth from Q1 2027 to Q2 2028, with TSMC and Samsung accounting for 52% of capacity but carrying high geopolitical risk.</p>
+
+        <h2>Recommendations</h2>
+        <p>Diversify to North American suppliers despite 12% higher costs. Maintain Aggressive reorder strategy. Monitor lead time changes and adjust safety stock accordingly.</p>
+
+        <div class="tags" style="margin-top: 32px;">
+            <span class="tag">Excel</span>
+            <span class="tag">PivotTables</span>
+            <span class="tag">VLOOKUP</span>
+            <span class="tag">Supply Chain</span>
+            <span class="tag">Forecasting</span>
+            <span class="tag">Risk Analysis</span>
+        </div>
+
+        <p style="margin-top: 48px;">
+            <a href="NVIDIA_Supply_Chain_Analysis.xlsx" download>Download Excel Model</a>
+        </p>
+    </div>
+</body>
+</html>
