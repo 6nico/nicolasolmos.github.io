@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Roblox AI Impact Lab | Nicolas Olmos</title>
+<link rel="stylesheet" href="style.css">
+<style>
+:root{--roblox:#00a2ff}.lab{max-width:940px}.lab nav{margin-bottom:50px}.eyebrow{text-transform:uppercase;letter-spacing:.12em;color:#64748b;font-size:12px;font-weight:700}.lab h1{font-size:clamp(34px,6vw,58px);line-height:1.14;letter-spacing:-.035em;margin:12px 0 20px}.lead{font-size:19px;max-width:650px}.lab h2{margin:44px 0 12px}.hero{padding-bottom:22px}.actions,.tabs,.presets{display:flex;flex-wrap:wrap;gap:10px}.btn,.tab{border:1px solid #cbd5e1;border-radius:9px;padding:12px 16px;background:white;color:#17212c;font-size:15px;font-weight:600;cursor:pointer;transition:transform .15s,border-color .15s}.btn:hover,.tab:hover{border-color:var(--roblox);transform:translateY(-2px)}.btn.primary,.tab[aria-selected="true"]{background:#007cbd;color:white;border-color:#007cbd}.panel{border:1px solid #e2e8f0;border-radius:13px;padding:24px;margin:20px 0}.stats,.cards,.results{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.stat,.tile{border:1px solid #e2e8f0;border-radius:10px;background:#f9fbfe;padding:18px}.stat strong{display:block;font-size:30px;color:#007cbd}.stat span,.note{font-size:13px;color:#64748b}.cards,.results{grid-template-columns:repeat(2,minmax(0,1fr))}.tile h3{font-size:18px}.tile p{margin-bottom:0}.step{display:flex;gap:18px;border-bottom:1px solid #e2e8f0;padding:14px 0}.step:last-child{border:0}.step b{color:#007cbd}.step p{margin:3px 0}.field{display:block;margin:18px 0}.field div{display:flex;justify-content:space-between;gap:10px}.field input{width:100%;accent-color:#007cbd;margin-top:10px}.result strong{display:block;font-size:28px}.result span{font-size:13px;color:#64748b}.hidden{display:none}.sources{padding-left:22px}.sources li{margin:8px 0}.lab button:focus-visible,.lab a:focus-visible{outline:3px solid #0ea5e9;outline-offset:3px}@media(max-width:650px){.stats,.cards,.results{grid-template-columns:1fr}.panel{padding:17px}}
+</style>
+</head>
+<body><main class="container lab">
+<nav><a href="index.html">← back to projects</a><a href="about.html">me</a></nav>
+<header class="hero"><div class="eyebrow">Independent student research · 2026 · Interactive prototype</div>
+<h1>Anyone can make a Roblox game now. <span style="color:#007cbd">But should they?</span></h1>
+<p class="lead">AI is making game creation easier. Will that bring new developers—or more games fighting for the same players?</p>
+<div class="actions"><button class="btn primary" id="start" type="button">Find out ↓</button><button class="btn" id="try" type="button">Try a what-if ↓</button></div></header>
+<section id="evidence"><div class="eyebrow">Roblox's Q3 2026 report</div><h2>Game creation is changing</h2>
+<div class="stats"><div class="stat"><strong>70,000+</strong><span>Games published with Roblox Build during its alpha, according to Roblox</span></div>
+<div class="stat"><strong>75%+</strong><span>Of Build users had never opened Roblox Studio before, according to Roblox</span></div>
+<div class="stat"><strong>~34B</strong><span>Platform engagement hours during Q3 2026—not AI-attributed playtime</span></div></div>
+<p class="note">These company-reported figures are not proof that AI increased profits, game quality, or retention. <a href="https://ir.roblox.com/financials/quarterly-results/default.aspx" target="_blank" rel="noopener noreferrer">Source: Roblox quarterly reports</a>.</p></section>
+<section><h2>From TikTok trend to Roblox game</h2><p>Here's a simplified path a small creator could follow. Not every developer works this way.</p><div class="panel">
+<div class="step"><b>01</b><div><strong>Spot a trend</strong><p>A meme, popular challenge, or short video sparks an idea.</p></div></div>
+<div class="step"><b>02</b><div><strong>Make a first version</strong><p>Use Roblox Studio, code, templates, and sometimes AI assistance.</p></div></div>
+<div class="step"><b>03</b><div><strong>Test and publish</strong><p>Check that the experience works, fix bugs, and release it.</p></div></div>
+<div class="step"><b>04</b><div><strong>Get people to try it</strong><p>Share short clips, build interest, and watch what catches on.</p></div></div>
+<div class="step"><b>05</b><div><strong>Keep them coming back</strong><p>Improve the game using feedback and player behavior.</p></div></div></div></section>
+<section><h2>Good for Roblox—or bad?</h2><div class="tabs" role="tablist" aria-label="AI outcomes"><button class="tab" type="button" data-tab="benefits" role="tab" aria-selected="true">What gets better?</button><button class="tab" type="button" data-tab="risks" role="tab" aria-selected="false">What could go wrong?</button></div>
+<div class="panel" id="benefits"><div class="cards"><div class="tile"><h3>More people can build</h3><p>Someone with a good idea may not need years of coding practice to start.</p></div><div class="tile"><h3>Faster experiments</h3><p>Creators can test ideas and improve games more quickly.</p></div></div></div>
+<div class="panel hidden" id="risks"><div class="cards"><div class="tile"><h3>More games, same attention?</h3><p>New releases still compete for players' time.</p></div><div class="tile"><h3>More work behind the scenes</h3><p>More content may mean more processing, storage, and review.</p></div></div></div></section>
+<section id="scenario"><div class="eyebrow">Hands-on scenario · Hypothetical numbers</div><h2>What if everyone starts making games?</h2><p>Change the numbers to explore how more uploads and better processing tools could affect capacity.</p>
+<div class="panel"><div class="presets"><button class="btn" type="button" data-preset="100,100,80">Starting point</button><button class="btn" type="button" data-preset="300,100,80">3× more uploads</button><button class="btn" type="button" data-preset="300,75,80">AI works faster</button></div>
+<label class="field"><div><strong>How many uploads?</strong><output id="uploadOut">300</output></div><input id="uploads" type="range" min="50" max="400" step="10" value="300"></label>
+<label class="field"><div><strong>Work needed per upload</strong><output id="effortOut">75%</output></div><input id="effort" type="range" min="50" max="150" step="5" value="75"></label>
+<label class="field"><div><strong>How busy can servers be?</strong><output id="utilOut">80%</output></div><input id="util" type="range" min="50" max="95" step="5" value="80"></label>
+<div class="results"><div class="tile result"><span>Capacity needed (index)</span><strong id="capacityOut" aria-live="polite">281.3</strong></div><div class="tile result"><span>Change from starting point</span><strong id="changeOut" aria-live="polite">+125%</strong></div></div>
+<p class="note" style="margin:16px 0 0">Calculation: upload index × effort ÷ utilization. Starting capacity = 100 ÷ 0.80 = 125 index units. This is an illustrative model, not Roblox server capacity, actual costs, or a financial forecast.</p></div></section>
+<section><h2>So what's the answer?</h2><p>AI might make Roblox more accessible to first-time creators. But making more games doesn't automatically mean more players, better experiences, or more profit. The key questions are whether games keep players interested—and whether new activity is worth the added costs.</p><p>This independent case study is a work in progress. Planned next steps include creator interviews, additional quarters of Roblox financial data, and deeper research on game discovery and retention.</p></section>
+<section><h2>Where the research comes from</h2><ul class="sources"><li><a href="https://ir.roblox.com/financials/quarterly-results/default.aspx">Roblox Investor Relations — Quarterly Results</a></li><li><a href="https://create.roblox.com/docs">Roblox Creator Hub — building and publishing</a></li><li><a href="https://devforum.roblox.com/">Roblox Developer Forum — creator discussions</a></li><li><a href="https://www.reddit.com/r/robloxgamedev/">r/robloxgamedev — community opinions</a></li></ul><p class="note">Community discussions are perspectives, not proof of platform-wide trends. Research and prototype by Nicolas Olmos. Not affiliated with Roblox.</p></section>
+</main><script>
+const el=id=>document.getElementById(id);
+el('start').onclick=()=>el('evidence').scrollIntoView({behavior:'smooth'});
+el('try').onclick=()=>el('scenario').scrollIntoView({behavior:'smooth'});
+document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-tab]').forEach(x=>x.setAttribute('aria-selected',String(x===b)));['benefits','risks'].forEach(id=>el(id).classList.toggle('hidden',id!==b.dataset.tab))});
+function update(){const u=+el('uploads').value,e=+el('effort').value/100,t=+el('util').value/100,c=u*e/t,p=(c/125-1)*100;el('uploadOut').textContent=u;el('effortOut').textContent=Math.round(e*100)+'%';el('utilOut').textContent=Math.round(t*100)+'%';el('capacityOut').textContent=c.toFixed(1);el('changeOut').textContent=(p>=0?'+':'')+p.toFixed(0)+'%'}
+['uploads','effort','util'].forEach(id=>el(id).addEventListener('input',update));
+document.querySelectorAll('[data-preset]').forEach(b=>b.onclick=()=>{const [u,e,t]=b.dataset.preset.split(',');el('uploads').value=u;el('effort').value=e;el('util').value=t;update()});update();
+</script></body></html>
