@@ -10,14 +10,14 @@ Owner and primary builder: Nicolas Olmos. Status: implementation specification, 
 
 The portfolio should demonstrate how Nicolas turns inventory experience and SQL analysis into a practical business recommendation.
 
-- **Micron Semiconductor Global Category Supplier Management:** supplier performance, spend, cost comparison, category decisions, and risk. This is the P0 application target. [Reviewed posting](https://www.linkedin.com/jobs/view/4481110656/)
-- **Marvell Supply Chain Intern:** demand/supply/backlog, forecasting, and planning. Complete P1 before claiming this coverage. [Reviewed posting](https://www.linkedin.com/jobs/view/4469732167/)
-- **Analog Devices Supply Chain Analyst:** inventory/customer-delivery exceptions, root causes, dashboards, and recommendations. [Reviewed posting](https://www.linkedin.com/jobs/view/4457279447/)
-- **Stryker Supply Chain:** purchasing/planning handoff and inventory targets. [Reviewed posting](https://www.linkedin.com/jobs/view/4480202143/)
-- **Zipline Global Supply Management:** purchase-order execution and supplier reporting. [Reviewed posting](https://www.linkedin.com/jobs/view/4455774428/)
-- **T-Mobile Supply Chain Planning:** device availability and inventory allocation; requires its own distribution example beyond P0. [Reviewed posting](https://www.linkedin.com/jobs/view/4489624163/)
+The P0 release targets supplier management and category roles: supplier performance, spend, cost comparison, category decisions, and risk. The P1 release targets planning roles: demand, supply, backlog, and forecasting. Complete P1 before claiming planning coverage. The same data supports other supply chain work, each with its own scoping:
 
-These mappings are applications of the project, not claims of employer sponsorship or use of internal data.
+- **Inventory and delivery exception analysis:** root causes, dashboards, and recommendations.
+- **Purchasing and planning handoff:** inventory targets.
+- **Purchase-order execution and supplier reporting.**
+- **Device availability and allocation:** requires its own distribution example beyond P0.
+
+These mappings describe what the project can demonstrate. They are not claims of employer sponsorship or use of internal data.
 
 ## Users and decisions
 
@@ -93,7 +93,7 @@ Report MAE = mean absolute forecast error and WAPE = sum absolute errors divided
 
 **PLAN 03 Policy comparison.** Compare a fixed baseline replenishment rule with one proposed rule under identical demand and lead-time scenarios. Use deterministic inputs or the same random seed. Report ending backlog, peak backlog, mean ending inventory, and cost only where a cost model is explicitly defined. Describe a stockout week precisely; do not call unfilled unit share a calibrated probability.
 
-**PLAN 04 Employer-specific recommendation.** Complete a Marvell demand/supply/ramp planning memo or an Analog Devices delivery-exception memo using the new outputs. Extend to multi-location device allocation for T-Mobile only as an additional clearly scoped module.
+**PLAN 04 Role-specific recommendation.** Complete either a demand/supply/ramp planning memo or a delivery-exception memo using the new outputs. Extend to multi-location device allocation only as an additional clearly scoped module.
 
 ## Non-goals
 

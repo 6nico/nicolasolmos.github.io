@@ -8,11 +8,11 @@ Owner and primary builder: Nicolas Olmos. Status: implementation specification f
 
 ## Purpose and internship alignment
 
-This project targets **Bloom Energy Service Operations Intern in San Jose**. The reviewed posting describes field-service process improvements, documentation, operations data, Salesforce/Quickbase applications, and an anticipated incident-management project. [Reviewed posting](https://www.linkedin.com/jobs/view/4490061884/)
+This project targets field-service and service operations roles. It focuses on process improvement, documentation, operations data, and incident-management workflows.
 
 Nicolas's retail operations and customer-facing experience support the process-improvement story. This prototype must add demonstrable workflow design, structured data, validation, and a proposed systems handoff. It must not imply experience implementing a real Salesforce or Quickbase integration unless that work is actually completed later.
 
-The workflow is a fictional administrative exercise. It does not reproduce proprietary Bloom terminology or criteria, authorize equipment operation, or replace an operational safety approval.
+The workflow is a fictional administrative exercise. It does not reproduce proprietary employer terminology or criteria, authorize equipment operation, or replace an operational safety approval.
 
 ## Users and outcomes
 
@@ -133,6 +133,6 @@ P0 is complete when the workflow and data criteria pass, the pilot is recorded, 
 
 Deliver the local prototype, setup instructions, synthetic seed records, schema and event definitions, workflow validation checks, exports, proposed integration mapping, pilot report, and a short operations recommendation. Include a contribution note distinguishing implemented work from optional extensions.
 
-Two-minute demonstration: start a draft; trigger and fix a field error; submit; request information as coordinator; correct and resubmit; show the event history; explain the measured pilot result and one limitation. The intended project is a credible operations case, not a claim to have rebuilt Bloom's internal system.
+Two-minute demonstration: start a draft; trigger and fix a field error; submit; request information as coordinator; correct and resubmit; show the event history; explain the measured pilot result and one limitation. The intended project is a credible operations case, not a claim to have rebuilt an employer's internal system.
 
 Allow approximately 6 to 10 focused hours for a narrow P0, with the pilot and evidence treated as part of completion. Reduce optional features before sacrificing validation or measured results.

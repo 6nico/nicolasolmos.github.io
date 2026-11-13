@@ -10,11 +10,11 @@ Owner and primary builder: Nicolas Olmos. Status: implementation specification, 
 
 This project should demonstrate Nicolas's ability to structure an ambiguous business problem, evaluate evidence, build a transparent model, and communicate a decision. His Business Economics studies, company analysis, retail customer experience, and Omny Pro outreach provide the background; the deliverable must show his own new reasoning.
 
-**Micron Sales Strategy and Operations:** prioritize customer opportunities, analyze commercial alternatives, and prepare a sales-planning recommendation. [Reviewed posting](https://www.linkedin.com/jobs/view/4485166248/)
+**Customer-segment case:** prioritize customer opportunities, analyze commercial alternatives, and prepare a sales-planning recommendation.
 
-**Ayar Labs Business Development 2:** compare potential international markets and produce an expansion playbook addressing opportunity, ecosystem, constraints, options, and open questions. [Reviewed posting](https://www.linkedin.com/jobs/view/4486304615/)
+**Market-entry case:** compare potential international markets and produce an expansion playbook addressing opportunity, ecosystem, constraints, options, and open questions.
 
-The underlying research workspace may be shared. The Micron and Ayar cases must have separate questions, models, evidence coverage, recommendations, and executive narratives. Do not relabel one analysis with a different company name.
+The underlying research workspace may be shared. The two cases must have separate questions, models, evidence coverage, recommendations, and executive narratives. Do not relabel one analysis with a different company name.
 
 ## Users and desired outcome
 
@@ -30,7 +30,7 @@ AI infrastructure is the subject matter, not a requirement to build an LLM produ
 
 ## P0 scope
 
-Deliver one complete employer-specific case with a working evidence register, option comparison, deterministic scenario model, sensitivity analysis, and executive output. Prefer three customer segments for the Micron case or two international markets with multiple entry options for the Ayar case. Choose a narrower question if there is insufficient credible evidence.
+Deliver one complete case with a working evidence register, option comparison, deterministic scenario model, sensitivity analysis, and executive output. Prefer three customer segments for the customer-segment case or two international markets with multiple entry options for the market-entry case. Choose a narrower question if there is insufficient credible evidence.
 
 Do not claim to have found the employer's actual confidential sales strategy. Use a clearly identified independent business case. Public facts must be real and dated; scenario operating assumptions may be hypothetical and labeled.
 
@@ -96,7 +96,7 @@ For a market-entry case, compare a small set of explicit structural options, suc
 
 ## Case-specific outputs
 
-### Micron commercial opportunity case
+### Customer-segment case
 
 - Define one product/category context and three clearly distinct customer archetypes.
 - Identify customer needs and relevant competitive alternatives with dated sources.
@@ -104,7 +104,7 @@ For a market-entry case, compare a small set of explicit structural options, suc
 - Recommend a priority and explain a condition that changes it.
 - Finish with an example account-planning brief and three validation questions. Do not invent actual customer buying intentions.
 
-### Ayar Labs market-entry case
+### Market-entry case
 
 - Compare two markets using demand drivers, ecosystem, manufacturing/partner capacity, and commercial constraints.
 - Evaluate at least two viable paths per market, including deferral if appropriate.
@@ -114,7 +114,7 @@ For a market-entry case, compare a small set of explicit structural options, suc
 
 ## P1 extensions
 
-Add the second employer case, automated spreadsheet generation, evidence-change history, or a richer sensitivity model after one case is complete. A source-ingestion assistant is optional. It must preserve original URLs, human review, and known coverage limitations. Live market feeds and autonomous fact generation are not P0 requirements.
+Add the second case, automated spreadsheet generation, evidence-change history, or a richer sensitivity model after one case is complete. A source-ingestion assistant is optional. It must preserve original URLs, human review, and known coverage limitations. Live market feeds and autonomous fact generation are not P0 requirements.
 
 ## Non-goals
 
@@ -136,10 +136,10 @@ Do not set an arbitrary minimum market-growth rate, revenue opportunity, or reco
 
 ## Build sequence and delivery
 
-**First milestone:** choose the employer case and a narrow decision question; assemble the source register and enough evidence to establish the comparison dimensions. If evidence is insufficient, narrow the question before coding more tooling.
+**First milestone:** choose the case and a narrow decision question; assemble the source register and enough evidence to establish the comparison dimensions. If evidence is insufficient, narrow the question before coding more tooling.
 
 **Second milestone:** implement persistence, evidence review, deterministic scenario calculations, and two sensitivity changes. Validate the acceptance fixtures.
 
 **Third milestone:** write the recommendation and five-slide narrative, audit the source trail, and record a two-minute walkthrough. A first complete case is expected to take roughly 6 to 10 focused hours; actual research availability determines scope.
 
-Deliver source files if a tool is built, setup instructions, the evidence register, model inputs and formulas, completed case exports, executive outputs, limitations, and an AI-assistance/contribution note. State which employer case is complete. Do not describe the work as completed for both employers when only one case has evidence.
+Deliver source files if a tool is built, setup instructions, the evidence register, model inputs and formulas, completed case exports, executive outputs, limitations, and an AI-assistance/contribution note. State which case is complete. Do not describe the work as completed for both cases when only one has evidence.
